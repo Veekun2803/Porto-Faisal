@@ -86,10 +86,10 @@
 </head>
 <body class="selection:bg-blue-500/30">
 
-    <!-- Navigasi -->
-    <nav class="fixed top-0 w-full z-50 glass">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <nav class="fixed top-0 w-full z-50 glass relative">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative z-10">
             <div class="text-xl font-bold tracking-tighter">PORT<span class="text-blue-500">FOLIO</span></div>
+            
             <div class="hidden md:flex space-x-8 text-sm font-medium">
                 <a href="#home" class="nav-link">Beranda</a>
                 <a href="#about" class="nav-link">Tentang</a>
@@ -97,37 +97,43 @@
                 <a href="#skills" class="nav-link">Keahlian</a>
                 <a href="#contact" class="nav-link">Kontak</a>
             </div>
-            <button class="md:hidden" id="mobile-menu-btn">
+            
+            <button class="md:hidden text-gray-300 hover:text-white transition-colors" id="mobile-menu-btn" aria-label="Toggle menu">
                 <i data-lucide="menu"></i>
             </button>
         </div>
+
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full glass border-t border-white/5 flex flex-col items-center py-6 space-y-6 shadow-2xl transition-all">
+            <a href="#home" class="nav-link mobile-link font-medium">Beranda</a>
+            <a href="#about" class="nav-link mobile-link font-medium">Tentang</a>
+            <a href="#projects" class="nav-link mobile-link font-medium">Proyek</a>
+            <a href="#skills" class="nav-link mobile-link font-medium">Keahlian</a>
+            <a href="#contact" class="nav-link mobile-link font-medium">Kontak</a>
+        </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6">
+    <section id="home" class="min-h-screen flex items-center justify-center pt-24 px-6">
         <div class="text-center">
             <div class="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-wider text-blue-400 uppercase glass rounded-full">
                 Tersedia untuk proyek baru
             </div>
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-                <span id="greeting" class="fade-text inline-block min-w-[120px]">Halo</span>, Saya <span class="text-gradient">Faisal Dwiki Nurdiansyah</span><br>
-                VIBE Coding Developer
+            <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                <span id="greeting" class="fade-text inline-block min-w-[100px] md:min-w-[120px]">Halo</span>, Saya <br class="md:hidden"><span class="text-gradient break-words">Faisal Dwiki Nurdiansyah</span><br>
+                <span class="text-3xl sm:text-4xl md:text-6xl mt-2 block">VIBE Coding Developer</span>
             </h1>
-            <p class="max-w-2xl mx-auto text-gray-400 text-lg mb-10">
+            <p class="max-w-2xl mx-auto text-gray-400 text-base md:text-lg mb-10 px-4">
                 Membangun pengalaman digital yang indah, fungsional, dan berpusat pada pengguna menggunakan teknologi web modern.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#projects" class="px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-xl font-semibold transition-all">Lihat Pekerjaan</a>
-                <a href="#contact" class="px-8 py-4 glass hover:bg-white/10 rounded-xl font-semibold transition-all">Hubungi Saya</a>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 px-4 sm:px-0">
+                <a href="#projects" class="px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-xl font-semibold transition-all text-center w-full sm:w-auto">Lihat Pekerjaan</a>
+                <a href="#contact" class="px-8 py-4 glass hover:bg-white/10 rounded-xl font-semibold transition-all text-center w-full sm:w-auto">Hubungi Saya</a>
             </div>
         </div>
     </section>
 
-    <!-- Tentang Section -->
-        <section id="about" class="py-24 px-6 bg-[#0f0f0f]">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+    <section id="about" class="py-16 md:py-24 px-6 bg-[#0f0f0f]">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
             
-            <!-- Desain Profil Lanyard -->
             <div class="relative flex justify-center pt-10">
                 <div class="absolute top-0 w-4 h-40 bg-zinc-800 rounded-full left-1/2 -translate-x-1/2 z-0 border-x border-zinc-700 shadow-xl"></div>
                 
@@ -136,17 +142,16 @@
                         <div class="w-2 h-2 bg-zinc-900 rounded-full"></div>
                     </div>
                     
-                    <div class="w-72 h-[420px] glass rounded-2xl border border-white/10 p-5 shadow-2xl flex flex-col items-center text-center relative overflow-hidden">
+                    <div class="w-64 md:w-72 h-[380px] md:h-[420px] glass rounded-2xl border border-white/10 p-5 shadow-2xl flex flex-col items-center text-center relative overflow-hidden">
                         <div class="absolute -top-10 -right-10 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl"></div>
                         
-                        <div class="w-full aspect-square rounded-xl overflow-hidden mb-6 border border-white/5 bg-zinc-900">
-                            <!-- Gunakan path relatif ./ untuk memastikan gambar terbaca di folder yang sama di Vercel -->
+                        <div class="w-full aspect-square rounded-xl overflow-hidden mb-4 border border-white/5 bg-zinc-900">
                             <img src="./profil.jpeg" alt="Profil" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop'">
                         </div>
                         
                         <div class="space-y-1">
-                            <h3 class="text-xl font-bold tracking-tight uppercase">Faisal Dwiki N.</h3>
-                            <p class="text-blue-500 text-xs font-bold uppercase tracking-widest">VIBE Coding Developer</p>
+                            <h3 class="text-lg md:text-xl font-bold tracking-tight uppercase">Faisal Dwiki N.</h3>
+                            <p class="text-blue-500 text-[10px] md:text-xs font-bold uppercase tracking-widest">VIBE Coding Developer</p>
                         </div>
                         
                         <div class="mt-auto w-full flex justify-between items-end border-t border-white/5 pt-4">
@@ -162,116 +167,110 @@
                             </div>
                         </div>
 
-                        <div class="mt-4 opacity-30">
-                            <i data-lucide="barcode" class="w-full h-8 stroke-1"></i>
+                        <div class="mt-3 md:mt-4 opacity-30">
+                            <i data-lucide="barcode" class="w-full h-6 md:h-8 stroke-1"></i>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div>
-                <h2 class="text-3xl font-bold mb-6 italic">Tentang Saya</h2>
-                <p class="text-gray-400 mb-6 leading-relaxed text-lg">
+            <div class="text-center md:text-left">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 italic">Tentang Saya</h2>
+                <p class="text-gray-400 mb-8 leading-relaxed text-base md:text-lg">
                     Saya membangun solusi digital yang bukan cuma berjalan, tapi terasa.
                     Berawal dari rasa penasaran, berkembang jadi passion dalam menciptakan sistem yang efisien, scalable, dan punya impact nyata.
                 </p>
-                <div class="grid grid-cols-2 gap-6">
-                    <div>
-                        <h4 class="text-blue-400 font-bold text-2xl">3+</h4>
-                        <p class="text-sm text-gray-500">Tahun Pengalaman</p>
+                <div class="grid grid-cols-2 gap-6 max-w-sm mx-auto md:mx-0">
+                    <div class="glass p-4 rounded-xl border border-white/5">
+                        <h4 class="text-blue-400 font-bold text-3xl mb-1">3+</h4>
+                        <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Tahun<br>Pengalaman</p>
                     </div>
-                    <div>
-                        <h4 class="text-blue-400 font-bold text-2xl">3+</h4>
-                        <p class="text-sm text-gray-500">Proyek Selesai</p>
+                    <div class="glass p-4 rounded-xl border border-white/5">
+                        <h4 class="text-blue-400 font-bold text-3xl mb-1">3+</h4>
+                        <p class="text-xs text-gray-500 uppercase tracking-wider font-semibold">Proyek<br>Selesai</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Proyek Section -->
-    <section id="projects" class="py-24 px-6">
+    <section id="projects" class="py-16 md:py-24 px-6">
         <div class="max-w-7xl mx-auto">
-            <div class="flex justify-between items-end mb-12">
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-end mb-10 md:mb-12 text-center md:text-left space-y-4 md:space-y-0">
                 <div>
-                    <h2 class="text-3xl font-bold mb-2">Proyek Pilihan</h2>
-                    <p class="text-gray-500 text-lg">Eksplorasi karya terbaru saya</p>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-2">Proyek Pilihan</h2>
+                    <p class="text-gray-500 text-base md:text-lg">Eksplorasi karya terbaru saya</p>
                 </div>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Proyek 1 -->
-                <div class="glass rounded-2xl overflow-hidden card-hover">
-                    <div class="h-48 bg-zinc-800 relative overflow-hidden group">
-                        <!-- Menggunakan gambar ilustrasi snack dari Unsplash -->
-                        <img src="https://cdn.phototourl.com/free/2026-05-25-e30fdb55-d223-41e2-ae7b-6de91e60c1a5.png" class="w-full h-full object-cover transition-transform group-hover:scale-110" alt="Website Profil Aneka Snack">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <div class="glass rounded-2xl overflow-hidden card-hover flex flex-col">
+                    <div class="h-48 md:h-52 bg-zinc-800 relative overflow-hidden group shrink-0">
+                        <img src="https://cdn.phototourl.com/free/2026-05-25-e30fdb55-d223-41e2-ae7b-6de91e60c1a5.png" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Website Profil Aneka Snack">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Website Profil Aneka Snack</h3>
-                        <p class="text-gray-500 text-sm mb-4">Website company profile untuk bisnis makanan ringan (snack) dengan katalog produk dan informasi kontak yang responsif.</p>
+                    <div class="p-6 flex flex-col grow">
+                        <h3 class="text-lg md:text-xl font-bold mb-2 line-clamp-2">Website Profil Aneka Snack</h3>
+                        <p class="text-gray-400 text-sm mb-4 grow">Website company profile untuk bisnis makanan ringan (snack) dengan katalog produk dan informasi kontak yang responsif.</p>
                         <div class="flex flex-wrap gap-2 mb-6">
                             <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full">PHP Native</span>
                             <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full">SaaDB</span>
                             <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full">Tailwind CSS</span>
                         </div>
-                        <a href="https://aneka-snack.vercel.app/" target="_blank" class="inline-flex items-center text-sm font-semibold text-blue-400 hover:text-blue-300">
+                        <a href="https://aneka-snack.vercel.app/" target="_blank" class="mt-auto inline-flex items-center w-max text-sm font-semibold text-blue-400 hover:text-blue-300 transition-colors">
                             Lihat Detail <i data-lucide="arrow-up-right" class="ml-1 w-4 h-4"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Proyek 2 -->
-                <div class="glass rounded-2xl overflow-hidden card-hover">
-                    <div class="h-48 bg-zinc-800 relative overflow-hidden group">
-                        <img src="https://cdn.phototourl.com/free/2026-05-25-aa2f3450-f829-4381-b649-32b6350681c2.png" class="w-full h-full object-cover transition-transform group-hover:scale-110" alt="Penjualan Smartphone Modern">
+                <div class="glass rounded-2xl overflow-hidden card-hover flex flex-col">
+                    <div class="h-48 md:h-52 bg-zinc-800 relative overflow-hidden group shrink-0">
+                        <img src="https://cdn.phototourl.com/free/2026-05-25-aa2f3450-f829-4381-b649-32b6350681c2.png" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Penjualan Smartphone Modern">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Website Penjualan HP</h3>
-                        <p class="text-gray-500 text-sm mb-4">Toko online khusus gadget dengan katalog produk dinamis, sistem keranjang belanja, dan manajemen stok inventaris.</p>
+                    <div class="p-6 flex flex-col grow">
+                        <h3 class="text-lg md:text-xl font-bold mb-2 line-clamp-2">Website Penjualan HP</h3>
+                        <p class="text-gray-400 text-sm mb-4 grow">Toko online khusus gadget dengan katalog produk dinamis, sistem keranjang belanja, dan manajemen stok inventaris.</p>
                         <div class="flex flex-wrap gap-2 mb-6">
                             <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full">PHP Native</span>
                             <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full">MySQL</span>
                             <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full">Tailwind CSS</span>
                         </div>
-                        <a href="#" class="inline-flex items-center text-sm font-semibold text-blue-400 hover:text-blue-300">
+                        <a href="#" class="mt-auto inline-flex items-center w-max text-sm font-semibold text-blue-400 hover:text-blue-300 transition-colors">
                             Lihat Detail <i data-lucide="arrow-up-right" class="ml-1 w-4 h-4"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Proyek 3 -->
-                <div class="glass rounded-2xl overflow-hidden card-hover">
-                    <div class="h-48 bg-zinc-800 relative overflow-hidden group">
-                        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform group-hover:scale-110" alt="Website Rental Mobil">
+                <div class="glass rounded-2xl overflow-hidden card-hover flex flex-col">
+                    <div class="h-48 md:h-52 bg-zinc-800 relative overflow-hidden group shrink-0">
+                        <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Website Rental Mobil">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Website Rental Mobil</h3>
-                        <p class="text-gray-500 text-sm mb-4">Sistem manajemen penyewaan kendaraan dengan fitur ketersediaan unit real-time dan manajemen armada.</p>
+                    <div class="p-6 flex flex-col grow">
+                        <h3 class="text-lg md:text-xl font-bold mb-2 line-clamp-2">Website Rental Mobil</h3>
+                        <p class="text-gray-400 text-sm mb-4 grow">Sistem manajemen penyewaan kendaraan dengan fitur ketersediaan unit real-time dan manajemen armada.</p>
                         <div class="flex flex-wrap gap-2 mb-6">
                             <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full">PHP Native</span>
                             <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full">MySQL</span>
                             <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full">Tailwind CSS</span>
                         </div>
-                        <a href="#" class="inline-flex items-center text-sm font-semibold text-blue-400 hover:text-blue-300">
+                        <a href="#" class="mt-auto inline-flex items-center w-max text-sm font-semibold text-blue-400 hover:text-blue-300 transition-colors">
                             Lihat Detail <i data-lucide="arrow-up-right" class="ml-1 w-4 h-4"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Proyek 4 -->
-                <div class="glass rounded-2xl overflow-hidden card-hover">
-                    <div class="h-48 bg-zinc-800 relative overflow-hidden group">
-                        <img src="https://images.unsplash.com/photo-1557200134-90327ee9fafa?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform group-hover:scale-110" alt="Website Absensi">
+                <div class="glass rounded-2xl overflow-hidden card-hover flex flex-col">
+                    <div class="h-48 md:h-52 bg-zinc-800 relative overflow-hidden group shrink-0">
+                        <img src="https://images.unsplash.com/photo-1557200134-90327ee9fafa?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt="Website Absensi">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Absensi Wajah & Lokasi</h3>
-                        <p class="text-gray-500 text-sm mb-4">Aplikasi presensi karyawan menggunakan pengenalan wajah (Face Recognition) dan validasi titik koordinat GPS.</p>
+                    <div class="p-6 flex flex-col grow">
+                        <h3 class="text-lg md:text-xl font-bold mb-2 line-clamp-2">Absensi Wajah & Lokasi</h3>
+                        <p class="text-gray-400 text-sm mb-4 grow">Aplikasi presensi karyawan menggunakan pengenalan wajah (Face Recognition) dan validasi titik koordinat GPS.</p>
                         <div class="flex flex-wrap gap-2 mb-6">
                             <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full">PHP Native</span>
                             <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full">MySQL</span>
                             <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full">Tailwind CSS</span>
                         </div>
-                        <a href="#" class="inline-flex items-center text-sm font-semibold text-blue-400 hover:text-blue-300">
+                        <a href="#" class="mt-auto inline-flex items-center w-max text-sm font-semibold text-blue-400 hover:text-blue-300 transition-colors">
                             Lihat Detail <i data-lucide="arrow-up-right" class="ml-1 w-4 h-4"></i>
                         </a>
                     </div>
@@ -281,68 +280,62 @@
         </div>
     </section>
 
-    <!-- Keahlian Section -->
-    <section id="skills" class="py-24 px-6 bg-[#0f0f0f]">
+    <section id="skills" class="py-16 md:py-24 px-6 bg-[#0f0f0f]">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-12">Keahlian Teknis</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="p-6 glass rounded-xl flex flex-col items-center card-hover">
-                    <i data-lucide="layout" class="w-8 h-8 text-blue-500 mb-3"></i>
-                    <span class="font-medium">Frontend</span>
+            <h2 class="text-3xl md:text-4xl font-bold mb-10 md:mb-12">Keahlian Teknis</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6">
+                <div class="p-4 md:p-6 glass rounded-xl flex flex-col items-center card-hover">
+                    <i data-lucide="layout" class="w-8 h-8 md:w-10 md:h-10 text-blue-500 mb-3"></i>
+                    <span class="font-medium text-sm md:text-base">Frontend</span>
                 </div>
-                <div class="p-6 glass rounded-xl flex flex-col items-center card-hover">
-                    <i data-lucide="code-2" class="w-8 h-8 text-blue-500 mb-3"></i>
-                    <span class="font-medium">PHP Native</span>
+                <div class="p-4 md:p-6 glass rounded-xl flex flex-col items-center card-hover">
+                    <i data-lucide="code-2" class="w-8 h-8 md:w-10 md:h-10 text-blue-500 mb-3"></i>
+                    <span class="font-medium text-sm md:text-base">PHP Native</span>
                 </div>
-                <div class="p-6 glass rounded-xl flex flex-col items-center card-hover">
-                    <i data-lucide="database" class="w-8 h-8 text-blue-500 mb-3"></i>
-                    <span class="font-medium">MySQL</span>
+                <div class="p-4 md:p-6 glass rounded-xl flex flex-col items-center card-hover">
+                    <i data-lucide="database" class="w-8 h-8 md:w-10 md:h-10 text-blue-500 mb-3"></i>
+                    <span class="font-medium text-sm md:text-base">MySQL</span>
                 </div>
-                <div class="p-6 glass rounded-xl flex flex-col items-center card-hover">
-                    <i data-lucide="brush" class="w-8 h-8 text-blue-500 mb-3"></i>
-                    <span class="font-medium">UI/UX Design</span>
+                <div class="p-4 md:p-6 glass rounded-xl flex flex-col items-center card-hover">
+                    <i data-lucide="brush" class="w-8 h-8 md:w-10 md:h-10 text-blue-500 mb-3"></i>
+                    <span class="font-medium text-sm md:text-base">UI/UX Design</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Kontak Section -->
-    <section id="contact" class="py-24 px-6">
-        <div class="max-w-4xl mx-auto glass rounded-3xl p-12 md:p-16 border-blue-500/20 text-center">
-            <h2 class="text-4xl font-bold mb-6">Mari Terhubung!<br><span class="text-blue-500 text-2xl">Buka untuk peluang baru</span></h2>
-            <p class="text-gray-400 mb-12 max-w-xl mx-auto text-lg">Anda bisa menghubungi saya secara langsung melalui saluran di bawah ini untuk konsultasi atau kerjasama.</p>
+    <section id="contact" class="py-16 md:py-24 px-4 sm:px-6">
+        <div class="max-w-4xl mx-auto glass rounded-3xl p-8 md:p-16 border border-blue-500/20 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 md:mb-6">Mari Terhubung!<br><span class="text-blue-500 text-xl md:text-2xl mt-2 inline-block">Buka untuk peluang baru</span></h2>
+            <p class="text-gray-400 mb-10 md:mb-12 max-w-xl mx-auto text-base md:text-lg">Anda bisa menghubungi saya secara langsung melalui saluran di bawah ini untuk konsultasi atau kerjasama.</p>
             
-            <div class="flex flex-wrap justify-center gap-8 md:gap-12">
-                <!-- Email -->
+            <div class="flex flex-row justify-center gap-6 sm:gap-12">
                 <a href="mailto:faisaldwikin@gmail.com?subject=Tanya%20Proyek%20Portofolio&body=Halo%20Faisal,%20saya%20tertarik%20bekerja%20sama..." class="group flex flex-col items-center space-y-3">
-                    <div class="w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
-                        <i data-lucide="mail" class="w-8 h-8"></i>
+                    <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                        <i data-lucide="mail" class="w-6 h-6 md:w-8 md:h-8"></i>
                     </div>
-                    <span class="text-sm font-medium text-gray-300 group-hover:text-blue-400">Email Me</span>
+                    <span class="text-xs md:text-sm font-medium text-gray-300 group-hover:text-blue-400">Email</span>
                 </a>
                 
-                <!-- WhatsApp -->
                 <a href="https://wa.me/6285862030566" target="_blank" class="group flex flex-col items-center space-y-3">
-                    <div class="w-16 h-16 rounded-2xl bg-green-500/10 flex items-center justify-center text-green-400 group-hover:bg-green-600 group-hover:text-white transition-all duration-300">
-                        <i data-lucide="message-circle" class="w-8 h-8"></i>
+                    <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-green-500/10 flex items-center justify-center text-green-400 group-hover:bg-green-600 group-hover:text-white transition-all duration-300">
+                        <i data-lucide="message-circle" class="w-6 h-6 md:w-8 md:h-8"></i>
                     </div>
-                    <span class="text-sm font-medium text-gray-300 group-hover:text-green-400">WhatsApp</span>
+                    <span class="text-xs md:text-sm font-medium text-gray-300 group-hover:text-green-400">WhatsApp</span>
                 </a>
                 
-                <!-- Instagram -->
                 <a href="https://instagram.com/fsl.dn" target="_blank" class="group flex flex-col items-center space-y-3">
-                    <div class="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-all duration-300 relative">
+                    <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-all duration-300 relative">
                         <div class="absolute inset-0 opacity-0 group-hover:opacity-20 bg-gradient-to-tr from-[#fdf497] via-[#fd5949] to-[#285AEB] blur-xl transition-opacity rounded-2xl"></div>
-                        <img src="https://png.pngtree.com/png-clipart/20180626/ourmid/pngtree-instagram-icon-instagram-logo-png-image_3584853.png" alt="Instagram" class="w-10 h-10 object-contain relative z-10 transition-transform group-hover:scale-110">
+                        <img src="https://png.pngtree.com/png-clipart/20180626/ourmid/pngtree-instagram-icon-instagram-logo-png-image_3584853.png" alt="Instagram" class="w-8 h-8 md:w-10 md:h-10 object-contain relative z-10 transition-transform group-hover:scale-110">
                     </div>
-                    <span class="text-sm font-medium text-gray-300 group-hover:text-pink-400 transition-colors">Instagram</span>
+                    <span class="text-xs md:text-sm font-medium text-gray-300 group-hover:text-pink-400 transition-colors">Instagram</span>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-12 border-t border-white/5 text-center text-gray-500 text-sm">
+    <footer class="py-10 border-t border-white/5 text-center text-gray-500 text-sm px-6">
         <div class="mb-6 flex justify-center space-x-6">
             <a href="#" class="hover:text-white transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
             <a href="#" class="hover:text-white transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
@@ -354,6 +347,23 @@
     <script>
         // Inisialisasi ikon Lucide
         lucide.createIcons();
+
+        // --- Logika Mobile Menu ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        // Toggle menu saat ikon hamburger diklik
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Tutup menu otomatis saat salah satu link diklik
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
 
         // --- Logika Ganti Bahasa (Halo) ---
         const greetings = [
